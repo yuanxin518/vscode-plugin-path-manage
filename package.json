@@ -6,6 +6,7 @@
     "engines": {
         "vscode": "^1.93.0"
     },
+    "icon": "./icons/path-manage.png",
     "categories": [
         "Other"
     ],
@@ -34,7 +35,7 @@
             "activitybar": [
                 {
                     "title": "Path Manage",
-                    "icon": "$path-manage/icons/16x16/hello-world.svg",
+                    "icon": "icons/path-manage.svg",
                     "id": "path-manage",
                     "content": "path-manage"
                 }
@@ -44,7 +45,8 @@
             "path-manage": [
                 {
                     "id": "path-manage.pathManageView",
-                    "name": "Paths"
+                    "name": "Paths",
+                    "icon": "icons/path-manage.svg"
                 }
             ]
         }
