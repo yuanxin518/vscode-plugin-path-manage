@@ -4,7 +4,7 @@ import path from "path";
 import PathManageView from "./manage/view";
 
 export function activate(context: vscode.ExtensionContext) {
-    const provider = new ViewTreeProvider();
+    const provider = new ViewTreeProvider(context);
 
     const disposable = vscode.commands.registerCommand("path-manage.addToPathManage", function (resource) {
         // const folder = vscode.workspace.getWorkspaceFolder(resource.fsPath);

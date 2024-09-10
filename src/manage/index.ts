@@ -1,15 +1,20 @@
 import * as vscode from "vscode";
+const pathManageDataKey = "PATH_MANAGE_DATA";
 
 class ViewTreeProvider implements vscode.TreeDataProvider<PathNode> {
     private _onDidChangeTreeData: vscode.EventEmitter<PathNode | undefined | null | void> = new vscode.EventEmitter<PathNode | undefined | null | void>();
     readonly onDidChangeTreeData: vscode.Event<PathNode | undefined | null | void> = this._onDidChangeTreeData.event;
-
+    private context: vscode.ExtensionContext;
     private _data: PathNode[] = [];
 
-    constructor() {}
+    constructor(context: vscode.ExtensionContext) {
+        this.context = context;
+        this._data = context.workspaceState.get(pathManageDataKey) || [];
+    }
 
     fireTreeDataChangeEvent() {
         this._onDidChangeTreeData.fire();
+        this.context.workspaceState.update(pathManageDataKey, this._data);
     }
 
     getTreeItem(element: PathNode): vscode.TreeItem {
